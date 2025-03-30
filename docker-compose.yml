@@ -1,0 +1,19 @@
+services:
+  
+  nginx:
+    image: nginx:latest
+    container_name: residence_buy
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    volumes:
+      - .:/var/www
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - laravel_network
+
+
+
+networks:
+  laravel_network:
+    external: true
